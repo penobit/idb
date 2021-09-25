@@ -534,6 +534,13 @@ class QueryBuilderHandler {
             $operator = '=';
         }
 
+        if(strpos($key, '->') !== false){
+            $keys = explode('->', $key);
+            $key = array_shift($keys);
+            $json = join('.', $keys);
+            $key = $this->raw("json_extract({$key}, '\$.{$json}') $operator ?", $value);
+        }
+
         return $this->whereHandler($key, $operator, $value);
     }
 
