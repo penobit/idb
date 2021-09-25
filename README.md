@@ -105,6 +105,7 @@ Library on [Packagist](https://packagist.org/packages/penobit/idb).
       - [Where Between](#where-between)
       - [Where Null](#where-null)
       - [Grouped Where](#grouped-where)
+      - [JSON where](#json-where)
     - [Group By and Order By](#group-by-and-order-by)
       - [Multiple Group By](#multiple-group-by)
     - [Having](#having)
@@ -302,6 +303,20 @@ QB::table('my_table')
     ->whereNotIn('name', array('heera', 'dalim'))
     ->orWhereNotIn('name', array('penobit', 'sana'))
     ;
+```
+
+#### JSON Where
+
+Select, update or delete a row using json data of a column using "column->json_key" syntaxt
+
+```PHP
+QB::table('my_table')
+    ->where('json_data->username', 'R8')
+;
+
+QB::table('my_table')
+    ->whereNotIn('json_data->username', ['Arash'])
+;
 ```
 
 #### Where Between
