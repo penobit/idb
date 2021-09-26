@@ -534,7 +534,7 @@ class QueryBuilderHandler {
             $operator = '=';
         }
 
-        if(strpos($key, '->') !== false){
+        if(is_string($key) && strpos($key, '->') !== false){
             $keys = explode('->', $key);
             $key = array_shift($keys);
             $json = join('.', $keys);
